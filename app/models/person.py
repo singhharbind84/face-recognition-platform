@@ -1,14 +1,34 @@
-from dataclasses import dataclass
-import numpy as np
+from sqlalchemy import Column
+from sqlalchemy import Integer
+from sqlalchemy import String
+from sqlalchemy import DateTime
+
+from datetime import datetime
+
+from app.core.database import Base
 
 
-@dataclass
-class Person:
+class Person(Base):
 
-    id: int
+    __tablename__ = "persons"
 
-    name: str
+    id = Column(
+        Integer,
+        primary_key=True,
+        index=True
+    )
 
-    embedding: np.ndarray
+    name = Column(
+        String,
+        nullable=False
+    )
 
-    image_path: str
+    image_path = Column(
+        String,
+        nullable=False
+    )
+
+    created_at = Column(
+        DateTime,
+        default=datetime.utcnow
+    )

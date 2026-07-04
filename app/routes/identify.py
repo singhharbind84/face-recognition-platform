@@ -14,7 +14,6 @@ registry_service = RegistryService()
 
 @router.post("/identify")
 async def identify(image: UploadFile = File(...)):
-
     try:
 
         os.makedirs("uploads", exist_ok=True)
@@ -29,10 +28,10 @@ async def identify(image: UploadFile = File(...)):
         result = registry_service.identify_person(embedding)
 
         if result is None:
-
             return {
                 "match": False,
-                "message": "No registered persons."
+                "person": None,
+                "similarity": 0
             }
 
         person = result["person"]
@@ -40,15 +39,24 @@ async def identify(image: UploadFile = File(...)):
 
         threshold = 0.50
 
+        if score >= threshold:
+            return {
+                "match": True,
+                "similarity": round(score, 4),
+                "person": {
+                    "id": person.id,
+                    "name": person.name,
+                    "image": person.image_path
+                }
+            }
+
         return {
-            "match": score >= threshold,
-            "name": person.name if score >= threshold else None,
-            "person_id": person.id if score >= threshold else None,
-            "similarity": round(score, 4)
+            "match": False,
+            "similarity": round(score, 4),
+            "person": None
         }
 
     except Exception as e:
-
         raise HTTPException(
             status_code=400,
             detail=str(e)
