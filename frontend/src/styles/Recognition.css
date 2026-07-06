@@ -1,0 +1,92 @@
+.page{
+    width:100%;
+    min-height:100vh;
+    background:#f4f6fa;
+    padding:20px;
+    box-sizing:border-box;
+}
+
+.page-title{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:34px;
+    font-weight:700;
+}
+
+.layout{
+
+    display:flex;
+
+    align-items:stretch;
+
+    gap:20px;
+
+    width:100%;
+
+}
+
+/* Camera takes remaining space */
+
+.camera-section{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+/* Recognition Card */
+
+.result-section{
+
+    width:340px;
+
+    min-width:320px;
+
+    max-width:360px;
+
+    display:flex;
+
+}
+
+/* Laptop */
+
+@media (max-width:1200px){
+
+    .result-section{
+
+        width:300px;
+
+        min-width:300px;
+
+    }
+
+}
+
+/* Tablet */
+
+@media (max-width:900px){
+
+    .layout{
+
+        flex-direction:column;
+
+    }
+
+    .camera-section{
+
+        width:100%;
+
+    }
+
+    .result-section{
+
+        width:100%;
+
+        max-width:none;
+
+        min-width:0;
+
+    }
+
+}

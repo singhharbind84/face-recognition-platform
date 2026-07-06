@@ -1,29 +1,53 @@
 import Camera from "../components/Camera/Camera";
+import RecognitionCard from "../components/Recognition/RecognitionCard";
+
 import useCamera from "../hooks/useCamera";
+import useRecognition from "../hooks/useRecognition";
 
-export default function Recognition() {
+import "../styles/Recognition.css";
 
-    const videoRef = useCamera();
+export default function Recognition(){
 
-    return (
+    const videoRef=useCamera();
 
-        <div
-            style={{
-                padding: "30px",
-                textAlign: "center"
-            }}
-        >
+    const result=useRecognition(videoRef);
 
-            <h1>
+    return(
+
+        <div className="page">
+
+            <h1 className="page-title">
 
                 Live Face Recognition
 
             </h1>
 
-            <Camera videoRef={videoRef} />
+            <div className="layout">
+
+                <div className="camera-section">
+
+                    <Camera
+
+                        videoRef={videoRef}
+
+                    />
+
+                </div>
+
+                <div className="result-section">
+
+                    <RecognitionCard
+
+                        result={result}
+
+                    />
+
+                </div>
+
+            </div>
 
         </div>
 
-    );
+    )
 
 }

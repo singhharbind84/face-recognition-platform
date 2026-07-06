@@ -1,0 +1,57 @@
+.card{
+
+    width:100%;
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    box-sizing:border-box;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+.card img{
+
+    width:100%;
+
+    border-radius:12px;
+
+    margin-bottom:20px;
+
+}
+
+.card h2{
+
+    margin-bottom:15px;
+
+}
+
+.card p{
+
+    margin:10px 0;
+
+    font-size:17px;
+
+}
+
+.status{
+
+    padding:10px;
+
+    border-radius:8px;
+
+    color:white;
+
+    background:#198754;
+
+    margin-bottom:20px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+}
